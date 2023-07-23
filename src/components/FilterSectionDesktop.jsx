@@ -1,11 +1,16 @@
+import React from "react";
 import { useDispatch } from "react-redux";
 import { filterByPrice } from "../redux/productSlice";
 import FilterCardDesktop from "./FilterCardDesktop";
 
 const FilterSectionDesktop = () => {
   const dispatch = useDispatch();
+  const [isChecked, setIsChecked] = React.useState(false);
+  const [chechedField, setIsCheckhedField] = React.useState("");
 
   const handlePriceSort = (sortBy) => {
+    setIsChecked(!isChecked);
+    setIsCheckhedField(sortBy);
     dispatch(filterByPrice({ sortBy }));
   };
 
@@ -48,13 +53,18 @@ const FilterSectionDesktop = () => {
             >
               <div className="flex items-center">
                 <input
+                  id={option.value}
                   type="radio"
                   value={option.value}
                   name="sortList"
+                  checked={chechedField === option.value}
                   className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 "
                   onChange={() => handlePriceSort(option.sortField)}
                 />
-                <label className="w-full py-3 ml-2 text-sm font-medium text-gray-900 ">
+                <label
+                  htmlFor={option.value}
+                  className="w-full py-3 ml-2 text-sm font-medium text-gray-900 "
+                >
                   {option.displayName}
                 </label>
               </div>

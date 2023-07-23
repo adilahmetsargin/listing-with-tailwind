@@ -67,10 +67,10 @@ const ProductListMobile = () => {
   return (
     <>
       <FilterSectionMobile />
-      <div className="flex flex-col gap-y-4 mb-2">
+      <div className="flex flex-col mb-2">
         <section className={`text-gray-600 ${!currentProducts && "hidden"}`}>
           <div className="container px-5 py-24 mx-auto shadow-md">
-            <div className="flex flex-wrap -m-4 divide-x-2">
+            <div className="flex flex-wrap -m-4 divide-x-2 justify-center">
               {currentProducts?.map((item) => (
                 <ProductCard key={item.id} item={item} />
               ))}
@@ -79,7 +79,7 @@ const ProductListMobile = () => {
         </section>
 
         {status !== "loading" && (
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center mt-2">
             <Pagination
               goToPreviousPage={goToPreviousPage}
               goToNextPage={goToNextPage}

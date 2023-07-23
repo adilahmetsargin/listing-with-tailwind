@@ -77,7 +77,7 @@ const ProductListDesktop = () => {
         </div>
 
         {status !== "loading" && (
-          <div className="flex items-center justify-center mt-4">
+          <div className="flex items-center justify-center mt-2">
             <Pagination
               goToPreviousPage={goToPreviousPage}
               goToNextPage={goToNextPage}

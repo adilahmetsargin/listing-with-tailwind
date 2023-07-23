@@ -2,7 +2,7 @@
 const Pagination = (props) => {
   return (
     <>
-      <div className="flex">
+      <div className="flex mt-4">
         <button
           disabled={props.isPrevButtonDisable}
           onClick={() => props.goToPreviousPage()}

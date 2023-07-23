@@ -102,7 +102,7 @@ const Cart = ({ isCartOpen, setIsCartOpen }) => {
                                   <div className="flex flex-1 items-end justify-between text-sm">
                                     <div className="flex items-center">
                                       <button
-                                        className="bg-blue-700 text-white font-bold p-1 rounded mt-4"
+                                        className="bg-blue-700 text-white font-bold px-1 w-6 h-6 rounded mt-4"
                                         onClick={() =>
                                           handleDecrementQuantity(product)
                                         }
@@ -115,7 +115,7 @@ const Cart = ({ isCartOpen, setIsCartOpen }) => {
                                       </p>
 
                                       <button
-                                        className="bg-blue-700 text-white font-bold p-1 rounded mt-4"
+                                        className="bg-blue-700 text-white font-bold px-1 w-6 h-6 rounded mt-4"
                                         onClick={() =>
                                           handleIncrementQuantity(product)
                                         }

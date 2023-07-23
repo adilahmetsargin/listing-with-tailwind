@@ -17,6 +17,9 @@ const FilterSectionMobile = () => {
   const [isFiltersOpen, setIsFiltersOpen] = React.useState(false);
   const [selectedSection, setSelectedSection] = React.useState("Models");
 
+  const [isCheckedForSort, setIsCheckedForSort] = React.useState(false);
+  const [chechedFieldForSort, setIsCheckhedFieldForSort] = React.useState("");
+
   const toggleSortSheet = () => {
     setIsSortOpen(!isSortOpen);
   };
@@ -26,6 +29,8 @@ const FilterSectionMobile = () => {
   };
 
   const handlePriceSort = (sortBy) => {
+    setIsCheckedForSort(!isCheckedForSort);
+    setIsCheckhedFieldForSort(sortBy);
     dispatch(filterByPrice({ sortBy }));
   };
 
@@ -115,7 +120,7 @@ const FilterSectionMobile = () => {
             }}
             onClick={toggleSortSheet}
           />
-          <div className="fixed bottom-0 w-screen h-auto bg-white p-4 shadow-lg z-[999999] rounded-t-2xl">
+          <div className="fixed bottom-0 w-screen h-auto bg-white p-4 shadow-2xl  z-[999999] rounded-t-2xl">
             <div className=" ">
               <h3 className="mb-4 font-semibold text-gray-900">Sort by</h3>
               <ul className="w-full text-sm font-medium text-gray-900 bg-white  ">
@@ -126,15 +131,16 @@ const FilterSectionMobile = () => {
                   >
                     <div className="flex items-center pl-3">
                       <input
-                        id="list-radio-license"
+                        id={option.value}
                         type="radio"
                         value={option.value}
                         name="list-radio"
+                        checked={chechedFieldForSort === option.value}
                         className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 "
                         onChange={() => handlePriceSort(option.sortField)}
                       />
                       <label
-                        htmlFor="list-radio-license"
+                        htmlFor={option.value}
                         className="w-full py-3 ml-2 text-sm font-medium text-gray-900 "
                       >
                         {option.displayName}
@@ -223,15 +229,20 @@ const FilterSectionMobile = () => {
                         >
                           <div className="flex items-center p-2 rounded hover:bg-gray-100 ">
                             <input
+                              id={model}
                               type="checkbox"
                               value={model}
                               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 mr-2"
                               checked={filters.model.includes(model)}
+                              name="list-radio"
                               onChange={() =>
                                 handleFilterChange("model", model)
                               }
                             />
-                            <label className="w-full ml-2 text-sm font-medium text-gray-900 rounded ">
+                            <label
+                              htmlFor={model}
+                              className="w-full ml-2 text-sm font-medium text-gray-900 rounded "
+                            >
                               {model}
                             </label>
                           </div>
@@ -250,6 +261,7 @@ const FilterSectionMobile = () => {
                         >
                           <div className="flex items-center p-2 rounded hover:bg-gray-100 ">
                             <input
+                              id={brand}
                               type="checkbox"
                               value={brand}
                               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 mr-2"
@@ -258,7 +270,10 @@ const FilterSectionMobile = () => {
                                 handleFilterChange("brand", brand)
                               }
                             />
-                            <label className="w-full ml-2 text-sm font-medium text-gray-900 rounded ">
+                            <label
+                              htmlFor={brand}
+                              className="w-full ml-2 text-sm font-medium text-gray-900 rounded "
+                            >
                               {brand}
                             </label>
                           </div>

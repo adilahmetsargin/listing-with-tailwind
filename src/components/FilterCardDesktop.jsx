@@ -33,7 +33,7 @@ const FilterCardDesktop = ({ type }) => {
   };
   return (
     <>
-      <div className="  bg-white rounded-lg shadow w-60 dark:bg-gray-700">
+      <div className="bg-white rounded-lg shadow w-60">
         <div className="p-3">
           <div className="relative">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -41,7 +41,7 @@ const FilterCardDesktop = ({ type }) => {
             </div>
             <input
               type="text"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  "
               placeholder={`Search ${type === "model" ? "model" : "brand"}`}
               value={
                 type === "model" ? searchTermForModels : searchTermForBrands
@@ -52,7 +52,7 @@ const FilterCardDesktop = ({ type }) => {
             />
           </div>
         </div>
-        <ul className="h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700 dark:text-gray-200">
+        <ul className="h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700 ">
           {type === "model"
             ? models
                 .filter((model) =>
@@ -67,13 +67,17 @@ const FilterCardDesktop = ({ type }) => {
                   >
                     <div className="flex items-center p-2 rounded hover:bg-gray-100 ">
                       <input
+                        id={model}
                         type="checkbox"
                         value={model}
                         className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 mr-2"
                         checked={filters.model.includes(model)}
                         onChange={() => handleFilterChange("model", model)}
                       />
-                      <label className="w-full ml-2 text-sm font-medium text-gray-900 rounded ">
+                      <label
+                        htmlFor={model}
+                        className="w-full ml-2 text-sm font-medium text-gray-900 rounded "
+                      >
                         {model}
                       </label>
                     </div>
@@ -92,13 +96,17 @@ const FilterCardDesktop = ({ type }) => {
                   >
                     <div className="flex items-center p-2 rounded hover:bg-gray-100 ">
                       <input
+                        id={brand}
                         type="checkbox"
                         value={brand}
                         className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 mr-2"
                         checked={filters.brand.includes(brand)}
                         onChange={() => handleFilterChange("brand", brand)}
                       />
-                      <label className="w-full ml-2 text-sm font-medium text-gray-900 rounded ">
+                      <label
+                        htmlFor={brand}
+                        className="w-full ml-2 text-sm font-medium text-gray-900 rounded "
+                      >
                         {brand}
                       </label>
                     </div>
